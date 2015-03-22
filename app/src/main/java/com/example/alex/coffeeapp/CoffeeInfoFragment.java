@@ -45,11 +45,16 @@ public class CoffeeInfoFragment extends Fragment {
         super.onCreate(savedInstanceState);
         // Add this line in order for this fragment to handle menu events.
         setHasOptionsMenu(true);
-        FetchDataTask dataTask = new FetchDataTask();
-        dataTask.execute(getString(R.string.web_url));
+
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        FetchDataTask dataTask = new FetchDataTask();
+        dataTask.execute(getString(R.string.web_url));
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -79,7 +84,7 @@ public class CoffeeInfoFragment extends Fragment {
 
 
         // Now that we have some dummy forecast data, create an ArrayAdapter.
-        // The ArrayAdapter will take data from a source (like our dummy forecast) and
+        // The ArrayAdapter will take data from a source  and
         // use it to populate the ListView it's attached to.
         mForecastAdapter =
                 new CofeInfoAdapter(
@@ -201,7 +206,7 @@ public class CoffeeInfoFragment extends Fragment {
                 for(CoffeeInfo coffeeInfo : result) {
                     mForecastAdapter.add(coffeeInfo);
                 }
-                // New data is back from the server.  Hooray!
+                // New data is back from the server.
             }
         }
 
