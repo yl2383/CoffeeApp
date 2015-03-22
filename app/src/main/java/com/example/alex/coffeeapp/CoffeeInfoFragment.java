@@ -1,6 +1,7 @@
 package com.example.alex.coffeeapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -89,6 +91,16 @@ public class CoffeeInfoFragment extends Fragment {
         // Get a reference to the ListView, and attach this adapter to it.
         ListView listView = (ListView) rootView.findViewById(R.id.listview_coffee);
         listView.setAdapter(mForecastAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CoffeeInfo cof = mForecastAdapter.getItem(position);
+                Intent intent = new Intent(getActivity(),DetailActivity.class)
+                        .putExtra("info",cof);
+                startActivity(intent);
+            }
+        });
 
         return rootView;
     }

@@ -60,7 +60,7 @@ public class CofeInfoAdapter extends ArrayAdapter<CoffeeInfo> {
         return convertView;
     }
 
-    private Bitmap loadImageFromNetwork(String url) {
+    protected static Bitmap loadImageFromNetwork(String url) {
         Bitmap bitmap = null;
         try {
             bitmap = BitmapFactory.decodeStream((InputStream) new URL(url).getContent());

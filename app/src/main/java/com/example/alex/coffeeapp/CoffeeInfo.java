@@ -1,9 +1,11 @@
 package com.example.alex.coffeeapp;
 
+import java.io.Serializable;
+
 /**
  * Created by alex on 2015/3/20.
  */
-public class CoffeeInfo {
+public class CoffeeInfo implements Serializable {
     private String desc;
     private String image_url;
     private String id;
